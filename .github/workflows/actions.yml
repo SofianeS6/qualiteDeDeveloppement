@@ -24,7 +24,4 @@ jobs:
       - name: Run tests with Gradle
         run: ./gradlew test --tests TestSuite
 
-      - name: Generate JaCoCo badge (optional)
-        uses: cicirello/jacoco-badge-generator@v2
-        with:
-          jacoco-csv-file: build/reports/jacoco/test/jacocoTestReport.csv
+  
