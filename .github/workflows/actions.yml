@@ -1,27 +1,24 @@
+---
 name: CI
-
 on:
-  pull_request:
-
+  pull_request: null
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
     name: Build and test
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
       - name: Set up JDK
         uses: actions/setup-java@v4
         with:
-          java-version: '17'
-          distribution: 'temurin'
-
+          java-version: "17"
+          distribution: temurin
       - name: Make gradlew executable
         run: chmod +x gradlew
-
       - name: Run tests with Gradle
         run: ./gradlew test --tests TestSuite
-
-  
+      - name: Generate JaCoCo Badge
+        uses: cicirello/jacoco-badge-generator@v2
+        with: null
+        jacoco-csv-file: build/reports/jacoco/test/jacocoTestReport.csv
